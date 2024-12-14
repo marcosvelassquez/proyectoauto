@@ -28,9 +28,22 @@
 
         <nav class="navbar navbar-expand navbar-light bg-light">
             <div class="nav navbar-nav">
+                <a class="nav-item nav-link active" href="{% url 'inicio'%}" >Inicio</a>
                 <a class="nav-item nav-link active" href="{% url 'usuarios'%}" >Usuarios</a>
                 <a class="nav-item nav-link active" href="{% url 'autos'%}">Autos</a>
                 <a class="nav-item nav-link active" href="{% url 'empleados'%}">Empleados</a>
+
+                {% if user.is_aunthenticated %}
+
+                <a class="nav-item nav-link active" href="{% url 'logout'%}">Iniciar sesión</a>
+
+                {% else %}
+
+                <a class="nav-item nav-link active" href="{% url 'login'%}">Cerrar sesión</a>
+                <a class="nav-item nav-link active" href="#">Hola! {{user.username}}</a>
+                
+
+                {% endif %}
                 
             </div>
         </nav>
